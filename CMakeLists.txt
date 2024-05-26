@@ -42,9 +42,6 @@ if(QTAES_QT_VERSION MATCHES "^([56])([.]|$)")
     set(QT_PACKAGE_NAME Qt${CMAKE_MATCH_1})
 
     set(QT_COMPS Core)
-    if(QTAES_ENABLE_TESTS)
-        list(APPEND QT_COMPS Test)
-    endif()
 
     find_package(${QT_PACKAGE_NAME} ${QTAES_QT_VERSION} REQUIRED COMPONENTS ${QT_COMPS})
 else()
@@ -101,29 +98,6 @@ target_link_libraries(QtAES
     PUBLIC
         ${QT_PACKAGE_NAME}::Core)
 
-if(QTAES_ENABLE_TESTS)
-    enable_testing()
-
-    add_executable(AESTest)
-
-    target_sources(AESTest
-        PRIVATE
-            main.cpp
-            res.qrc
-            unit_test/aestest.cpp
-            unit_test/aestest.h
-            unit_test/longText.txt)
-
-    target_link_libraries(AESTest
-        PRIVATE
-            QtAES
-            ${QT_PACKAGE_NAME}::Core
-            ${QT_PACKAGE_NAME}::Test)
-
-    add_test(
-        NAME AESTest
-        COMMAND AESTest)
-endif()
 
 if(QTAES_ENABLE_INSTALL)
     include(CMakePackageConfigHelpers)
