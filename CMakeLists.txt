@@ -13,6 +13,7 @@ option(QTAES_ENABLE_WERROR "${PROJECT_NAME}: Treat warnings as errors" OFF)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core)
 set(QTAES_QT_VERSION ${QT_VERSION_MAJOR} CACHE STRING "${PROJECT_NAME}: Qt version to use")
+set(CMAKE_DEBUG_POSTFIX d)
 
 if(QTAES_ENABLE_INSTALL)
     include(GNUInstallDirs)
