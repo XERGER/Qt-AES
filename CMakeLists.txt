@@ -1,6 +1,12 @@
 cmake_minimum_required(VERSION 3.12 FATAL_ERROR)
 project(QtAES VERSION 1.1 LANGUAGES CXX)
 
+# Suppress CMP0111 warnings by setting the policy to OLD
+if(COMMAND cmake_policy)
+    cmake_policy(SET CMP0111 OLD)
+endif()
+
+
 set(QTAES_STANDALONE_BUILD OFF)
 if(PROJECT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
     set(QTAES_STANDALONE_BUILD ON)
